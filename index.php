@@ -6,17 +6,18 @@
     Date: 2020-10-18
     */
     
+    // If Logout request unset session and redirect to login page
+    if(isset($_REQUEST["Logout"])) {
+        session_unset();
+        header('Location:' . $_SERVER['PHP_SELF']);
+    }
+
     // If prior session exits redirect to secure page
     include("includes/config.php");
     if (isset($_SESSION["username"])) {
         header("location: portfolio.php");
     }
 
-    // If Logout request unset session and redirect to login page
-    if(isset($_REQUEST["Logout"])) {
-        session_unset();
-        header('Location:' . $_SERVER['PHP_SELF']);
-    }
     $username = "";
     $password = "";
 
