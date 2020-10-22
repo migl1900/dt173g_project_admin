@@ -1,0 +1,57 @@
+/* Styling logo */
+.logo-name {
+  font-family: font(header);
+  font-size: 3.5em;
+  color: color(green);
+  text-transform: uppercase;
+  @include mobile {
+    font-size: 10vw;
+  }
+}
+.logo-title {
+  font-family: font(header);
+  font-size: 2em;
+  text-transform: uppercase;
+  @include mobile {
+    font-size: 5.5vw;
+  }
+}
+
+/* Styling form fields */
+input {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 0.6em;
+  font-size: font-size(h6);
+  border: 1px solid colors(dark-background);
+  box-sizing: border-box;
+}
+
+textarea {
+  @extend input;
+  height: 10em;
+  font-family: font(text);
+  font-size: font-size(h6);
+}
+
+input[type=submit], button {
+  width: 100%;
+  font-size: font-size(h6);
+  background-color: color(green);
+  color: color(light);
+  padding: 1em;
+  margin-top: 0.5em;
+  border: none;
+  cursor: pointer;
+  margin: 0.1em;
+}
+input[type=submit]:hover, button:hover {
+    background-color: color(dark-green);
+}
+.form-container {
+  width: 25em;
+
+  @include mobile {
+    width: 100%;
+  }
+}

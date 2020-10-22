@@ -1,0 +1,80 @@
+/* Layout specific design */
+.center {
+    margin: 0 auto;
+}
+.flex {
+    display: flex;
+    justify-content: space-around;
+    @include mobile {
+        flex-direction: column;
+    }
+}
+.border-left {
+    border-left: 1px solid color(green);
+}
+.container {
+    @extend .center;
+    max-width: $desktop;
+    padding: 1em;
+    margin-top: 2em;
+}
+header {
+    @extend .flex;
+    align-items: center;
+}
+main {
+    margin-top: 2em;
+}
+.left {
+    width: 40%;
+}
+.right {
+    width: 60%;
+}
+.portfolio {
+    @extend .flex;
+    flex-wrap: wrap;
+}
+.reference {
+    border: 1px solid color(dark);
+    padding: 1em;
+    width: 350px;
+    background-color: white;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+
+    img {
+        @extend .center-image;
+    }
+
+    @include mobile {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+.reference-buttons {
+    @extend .flex;
+    margin-top: auto;
+}
+.experience, .education {
+    width: 60%;
+
+    @include tablet {
+        width: 80%;
+    }
+
+    @include mobile {
+        width: 100%;
+    }
+}
+.center-image {
+    @extend .center;
+    display: block;
+}
+.center-text {
+    text-align: center;
+}
+.padding-left {
+    padding-left: 2em;
+}

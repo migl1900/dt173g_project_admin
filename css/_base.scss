@@ -1,0 +1,121 @@
+/* Colors varable */
+$colors: (
+    green: #199a88,
+    dark-green: #1e7b6f,
+    blue: #3366cc,
+    light: #dfe5eb,
+    dark: #373445,
+);
+
+/* Font family variable */
+$font-stack: (
+    header: ('Montserrat', sans-serif),
+    text: ('Open Sans', sans-serif),
+);
+
+/* Font size varable */
+$font-sizes: (
+    h1: 3.5em,
+    h2: 3em,
+    h3: 2em,
+    h4: 1.6em,
+    h5: 1.3em,
+    h6: 1.1em
+);
+
+/* Breaking points varables */
+$desktop: 1240px;
+$tablet: 1023px;
+$mobile: 767px;
+
+/* Functions for easy access to sass maps */
+@function color($color-name) {
+    @return map-get($colors, $color-name);
+}
+
+@function font($font-name) {
+    @return map-get($font-stack, $font-name);
+}
+
+@function font-size($size) {
+    @return map-get($font-sizes, $size);
+}
+
+/* Functions to add breaking point specific code */
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$mobile}) and (max-width: #{$tablet}) {
+        @content;
+    }
+}
+
+/* Main design elements */
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: font(text);
+    background-color: color(light);
+    font-size: font-size(h6);
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.headers {
+    font-family: font(header);
+    font-weight: bold;
+    color: color(green);
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+}
+h1 {
+    @extend .headers;
+    font-size: font-size(h1);
+    @include mobile {
+        font-size: font-size(h2);
+    }
+}
+h2 {
+    @extend .headers;
+    font-size: font-size(h2);
+    @include mobile {
+        font-size: font-size(h3);
+    }
+}
+h3 {
+    @extend .headers;
+    font-size: font-size(h3);
+}
+h4 {
+    @extend .headers;
+    font-size: font-size(h4);
+}
+h5 {
+    @extend .headers;
+    font-size: font-size(h5);
+}
+h6 {
+    @extend .headers;
+    font-size: font-size(h6);
+}
+.small-text {
+    font-size: 0.9em;;
+}
+a, a:visited {
+    color: color(blue);
+    text-decoration: none;
+}
+a:hover {
+    color: color(dark-green);
+}
+a:after {
+    content: "\00bb";
+    margin-left: 2px;
+}
