@@ -24,7 +24,7 @@ function getAllEducations() {
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => {
@@ -62,12 +62,13 @@ function getAllEducations() {
 // REST request using GET for specific education
 function getEducation(id) {
     messageEl.innerHTML = "";
+    educationForm.scrollIntoView();
     fetch("https://webicon.se/tweug/dt173g/projekt/rest/education.php?id=" + id, {
         method: "GET",
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
@@ -108,7 +109,7 @@ function deleteEducation(id) {
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
@@ -123,6 +124,8 @@ function deleteEducation(id) {
 
 // REST request using POST header to add new education
 function addEducation(event) {
+    event.preventDefault();
+    
     messageEl.innerHTML = "";
     let newEducation = {
         "course": courseInput.value,
@@ -130,14 +133,14 @@ function addEducation(event) {
         "school": schoolInput.value,
         "description": descriptionInput.value
     }
-    event.preventDefault();
+    
     fetch("https://webicon.se/tweug/dt173g/projekt/rest/education.php", {
         method: "POST",
         mode: "cors",
         credentials: "same-origin",
         body: JSON.stringify(newEducation),
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
@@ -153,6 +156,8 @@ function addEducation(event) {
 
 // REST request using PUT header to edit existing education
 function editEducation(id, event) {
+    event.preventDefault();
+
     messageEl.innerHTML = "";
     let editEducation = {
         "course": courseInput.value,
@@ -160,14 +165,13 @@ function editEducation(id, event) {
         "school": schoolInput.value,
         "description": descriptionInput.value,
     }
-    event.preventDefault();
     fetch("https://webicon.se/tweug/dt173g/projekt/rest/education.php?id=" + id, {
         method: "PUT",
         mode: "cors",
         credentials: "same-origin",
         body: JSON.stringify(editEducation),
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())

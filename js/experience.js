@@ -24,7 +24,7 @@ function getAllExperiences() {
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => {
@@ -62,12 +62,13 @@ function getAllExperiences() {
 // REST request using GET for specific experience
 function getExperience(id) {
     messageEl.innerHTML = "";
+    experienceForm.scrollIntoView();
     fetch("https://webicon.se/tweug/dt173g/projekt/rest/experience.php?id=" + id, {
         method: "GET",
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
@@ -108,7 +109,7 @@ function deleteExperience(id) {
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
@@ -123,6 +124,8 @@ function deleteExperience(id) {
 
 // REST request using POST header to add new experience
 function addExperience(event) {
+    event.preventDefault();
+
     messageEl.innerHTML = "";
     let newExperience = {
         "header": headerInput.value,
@@ -130,14 +133,13 @@ function addExperience(event) {
         "year": yearInput.value,
         "description": descriptionInput.value
     }
-    event.preventDefault();
     fetch("https://webicon.se/tweug/dt173g/projekt/rest/experience.php", {
         method: "POST",
         mode: "cors",
         credentials: "same-origin",
         body: JSON.stringify(newExperience),
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
@@ -153,6 +155,8 @@ function addExperience(event) {
 
 // REST request using PUT header to edit existing experience
 function editExperience(id, event) {
+    event.preventDefault();
+    
     messageEl.innerHTML = "";
     let editExperience = {
         "header": headerInput.value,
@@ -160,14 +164,13 @@ function editExperience(id, event) {
         "year": yearInput.value,
         "description": descriptionInput.value,
     }
-    event.preventDefault();
     fetch("https://webicon.se/tweug/dt173g/projekt/rest/experience.php?id=" + id, {
         method: "PUT",
         mode: "cors",
         credentials: "same-origin",
         body: JSON.stringify(editExperience),
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())

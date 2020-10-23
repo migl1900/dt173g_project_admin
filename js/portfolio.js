@@ -26,7 +26,7 @@ function getAllReferences() {
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => {
@@ -59,12 +59,13 @@ function getAllReferences() {
 // REST request using GET for specific reference
 function getReference(id) {
     messageEl.innerHTML = "";
+    referenceForm.scrollIntoView();
     fetch("https://webicon.se/tweug/dt173g/projekt/rest/portfolio.php?id=" + id, {
         method: "GET",
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
@@ -110,7 +111,7 @@ function deleteReference(id, image) {
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
@@ -125,6 +126,8 @@ function deleteReference(id, image) {
 
 // REST request using POST header to add new reference
 function addReference(event) {
+    event.preventDefault();
+    
     messageEl.innerHTML = "";
     let newReference = {
         "header": headerInput.value,
@@ -133,7 +136,6 @@ function addReference(event) {
         "image": imageInput.files[0].name, // Name of file
         "alt": altInput.value
     }
-    event.preventDefault();
 
     // First store input in DB
     fetch("https://webicon.se/tweug/dt173g/projekt/rest/portfolio.php", {
@@ -142,7 +144,7 @@ function addReference(event) {
         credentials: "same-origin",
         body: JSON.stringify(newReference),
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
@@ -160,6 +162,8 @@ function addReference(event) {
 
 // REST request using PUT header to edit existing reference
 function editReference(id, event) {
+    event.preventDefault();
+
     messageEl.innerHTML = "";
     let editReference = ""
 
@@ -180,14 +184,13 @@ function editReference(id, event) {
             "alt": altInput.value,
         }
     }
-    event.preventDefault();
     fetch("https://webicon.se/tweug/dt173g/projekt/rest/portfolio.php?id=" + id, {
         method: "PUT",
         mode: "cors",
         credentials: "same-origin",
         body: JSON.stringify(editReference),
         headers: {
-            "Authorization": "Basic " + btoa("micke:micke"),
+            "Authorization": "Basic bWlja2U6bWlja2U=",
           }, 
     })
     .then(resp => resp.json())
