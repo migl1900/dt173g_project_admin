@@ -6,6 +6,8 @@
     Date: 2020-10-18
     */
     
+    include("includes/config.php");
+    
     // If Logout request unset session and redirect to login page
     if(isset($_REQUEST["Logout"])) {
         session_unset();
@@ -13,7 +15,6 @@
     }
 
     // If prior session exits redirect to secure page
-    include("includes/config.php");
     if (isset($_SESSION["username"])) {
         header("location: portfolio.php");
     }
